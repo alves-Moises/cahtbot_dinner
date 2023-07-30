@@ -6,7 +6,7 @@ class User{
         this.name = ""
         this.adress = ""
         this.pay_method = ""
-        this.orders = {}
+        this.orders = []
         this.observation = ""
     }
 
@@ -42,18 +42,18 @@ class User{
         return this.orders
     }
 
-    add_order(order){
-        var id = order.id
-        var item = order.item
-        var qtd = order.qtd
-        var value = order.value
+    get number() {
+        return this.number
+    }
 
-        this.orders = {
-            "id": id,
-            "item": item,
-            "qtd": qtd,
-            "value": value
-        }
+    add_order(order){
+        
+        this.orders.push({
+            "id": order["id"],
+            "item": order["item"],
+            "qtd": order["qtd"],
+            "value": order["value"]
+        })
     }
 
 }

@@ -1,0 +1,4 @@
+
+User = require("../user/")
+
+users = {}

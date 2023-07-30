@@ -1,7 +1,7 @@
 
 console.log('Entrando... Aguarde')
 
-const { MessageMedia } = require("whatsapp-web.js")
+const { MessageMedia, Client } = require("whatsapp-web.js")
 const client = require("./src/clientStart.js")
 // const { List , Client , LocalAuth , MessageMedia , Buttons, Reaction } = require("whatsapp-web.js");
 const chalk = require("chalk");
@@ -9,10 +9,13 @@ const chalk = require("chalk");
 const { 
     no_prefix_commands,
     prefix_commands 
-} = require('./reactive_messages.js')
+} = require('./reactive_messages.js');
+const { ListCategory } = require("./src/list.js");
 
 const prefix = '?'
+var users = {}
 
+const roleta_group = "120363146202794187@g.us"
 
 const welcome_msg = () => {
     const text = `
@@ -20,15 +23,15 @@ const welcome_msg = () => {
         Me chame de _alves_
         Sou o criador desse chatbot ;)
 
+        ROLETADAS E RUSSAS
         _Em desenvolvimento_
-        
-        
     `
 
     return text
 }
 
 client.on("group_join", async (group_update) => {
+    if(group_update.id != roleta_group) { return }
     try{
 
         // const user = await group_update.getContact()
@@ -93,8 +96,14 @@ client.on("message", async (msg) => {
     let msg_array = msgLower.split(" ")
     let user = await msg.getContact()
     let name = user.pushname
-
+    
+    const chat = msg.getChat()
+    if(msg.from != roleta_group) {return}
+    console.log("\n\n =======================")
+    console.log(msg.from)
+    
     console.log(`${user}: ${msg.body}`)
+    
     // console.log(user)
     if(Object.keys(no_prefix_commands).includes(msgLower)){
         client.sendMessage(msg.from, no_prefix_commands[msgLower])
@@ -115,4 +124,6 @@ client.on("message", async (msg) => {
         // client.sendMessage(msg.from, "ALVES O #(@*$@#")
         return
     }
+
+    client.sendMessage(msg.from, ListCategory)
 })

@@ -4,15 +4,14 @@ const chalk = require("chalk");
 const qrcode = require("qrcode-terminal")
 
 
-// -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+// -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 // -+-+-+-+
 // -+-+-+-+ AUTHOR:     Moisés Alves
 // -+-+-+-+ GITHUB:     https://github.com/alves-Moises/ 
 // -+-+-+-+ LINKEDIN:   https://www.linkedin.com/in/moises-alves-b1272a204/
 // -+-+-+-+ CONTACT ME:    https://linktr.ee/alves_moises
 // -+-+-+-+ 
-// -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
+// -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 const client = new Client({
     authStrategy: new LocalAuth({
 	puppeteer: {

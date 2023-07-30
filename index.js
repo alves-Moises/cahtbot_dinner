@@ -4,18 +4,16 @@ console.log('Entrando... Aguarde')
 const { MessageMedia, Client } = require("whatsapp-web.js")
 const client = require("./src/clientStart.js")
 // const { List , Client , LocalAuth , MessageMedia , Buttons, Reaction } = require("whatsapp-web.js");
+
 const chalk = require("chalk");
 
-const { 
-    no_prefix_commands,
-    prefix_commands 
-} = require('./reactive_messages.js');
 const { ListCategory } = require("./src/list.js");
+const { Welcome } = require("./src/functions/default_message.js")
 
 const prefix = '?'
 var users = {}
+var users_arr = [] 
 
-const roleta_group = "120363146202794187@g.us"
 
 const welcome_msg = () => {
     const text = `
@@ -29,9 +27,10 @@ const welcome_msg = () => {
 
     return text
 }
+const my_group = "120363133137637660@g.us"
 
 client.on("group_join", async (group_update) => {
-    if(group_update.id != roleta_group) { return }
+    if(1 == 1){ return }
     try{
 
         // const user = await group_update.getContact()
@@ -91,39 +90,36 @@ client.on("group_leave", async (group_update) => {
 
 })
 
+// ============ INTRO ====================
 client.on("message", async (msg) => {
     let msgLower = msg.body.toLowerCase().trim()
     let msg_array = msgLower.split(" ")
     let user = await msg.getContact()
     let name = user.pushname
-    
     const chat = msg.getChat()
-    if(msg.from != roleta_group) {return}
+
+    if (Object.keys(users).includes(msg.from)){ return }
+    if (msg.from != my_group) { return }
+    if (msg.isGroup) { return }
+    
+
+    if(msg.from != my_group) { return }
     console.log("\n\n =======================")
     console.log(msg.from)
     
     console.log(`${user}: ${msg.body}`)
     
     // console.log(user)
-    if(Object.keys(no_prefix_commands).includes(msgLower)){
-        client.sendMessage(msg.from, no_prefix_commands[msgLower])
-        console.log(`key in prefix... ${chalk.yellow(name)}`)
-        return
-    }
 
-
-    if(Object.keys(prefix_commands).includes(msgLower.substring(1))){
-        command_msg = no_prefix_commands[msgLower.substring(1)]
-        
-        msg.reply(no_prefix_commands[msgLower.substring(1)])
-        console.log(`${command_msg}... ${chalk.yellow(`${name}`)}`)    
-        return
-    }
-
-    if(msgLower.includes("alves")){
-        // client.sendMessage(msg.from, "ALVES O #(@*$@#")
-        return
-    }
-
+    client.sendMessage(msg.from, Welcome)
     client.sendMessage(msg.from, ListCategory)
+    users[msg.from] = {
+
+    }
 })
+
+// ============ ITEM_SELECTOR ========
+client.on("message", async (msg) => {
+
+})
+

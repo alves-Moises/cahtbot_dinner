@@ -2,7 +2,8 @@ const no_prefix_commands = {
     // "alves": "alves o caralho",
     "gay acima": "gay abaixo",
     "pong": "pong o caralho",
-    "java": "cade meu cafezinh?"
+    "java": "cade meu cafezinh?",
+    "amor": "amor"
 }
 
 const prefix_commands = {

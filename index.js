@@ -94,7 +94,7 @@ client.on("message", async (msg) => {
     let user = await msg.getContact()
     let name = user.pushname
 
-
+    console.log(`${user}: ${msg.body}`)
     // console.log(user)
     if(Object.keys(no_prefix_commands).includes(msgLower)){
         client.sendMessage(msg.from, no_prefix_commands[msgLower])

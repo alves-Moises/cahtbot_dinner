@@ -77,15 +77,10 @@ client.on("group_leave", async (group_update) => {
     const chat = await group_update.getChat()
         console.log(chat.isGroup)
         
-    console.log(`${chalk.redBright(`${quit.pushname}`)} removido por ${chalk.yellow(`${user.pushname}`)}.`)
-    // console.log(group_update)
-
-    chat.sendMessage(
-        `Usário removido. ${
-            quit.pushname == undefined 
-                ? "" 
-                : "nome: " + quit.pushname
-        }`
+    console.log(
+        `${chalk.redBright(`${quit.pushname}`)} 
+        removido por 
+        ${chalk.yellow(`${user.pushname}`)}.`
     )
 
 })
@@ -120,6 +115,12 @@ client.on("message", async (msg) => {
 
 // ============ ITEM_SELECTOR ========
 client.on("message", async (msg) => {
+    if(msg.isStatus || msg.isGroup) return
+
+    if(!Object.keys(users).includes(msg.from)){
+        NewUser(msg.from)
+        console.log(chalk.green("\nAdded user:"), msg.from, msg.author)
+    }
 
 })
 

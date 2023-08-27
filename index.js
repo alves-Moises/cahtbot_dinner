@@ -115,9 +115,7 @@ client.on("message", async (msg) => {
 
     client.sendMessage(msg.from, Welcome)
     client.sendMessage(msg.from, ListCategory)
-    users[msg.from] = {
-
-    }
+    
 })
 
 // ============ ITEM_SELECTOR ========
@@ -131,3 +129,6 @@ client.on("message", async (msg) => {
 
 })
 
+
+    // }
+})

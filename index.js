@@ -8,12 +8,10 @@ const client = require("./src/clientStart.js")
 const chalk = require("chalk");
 
 const { ListCategory } = require("./src/list.js");
-const { Welcome } = require("./src/functions/default_message.js")
+const { Welcome } = require("./src/default_message.js")
 
 const prefix = '?'
-var users = {}
-var users_arr = [] 
-
+const { NewUser, AddItem, PayMethod } = require("./src/functions/Controller/UserController.js")
 
 const welcome_msg = () => {
     const text = `
@@ -118,7 +116,7 @@ client.on("message", async (msg) => {
     
 })
 
-// ============ ITEM_SELECTOR ========
+// ============ First message ========
 client.on("message", async (msg) => {
     if(msg.isStatus || msg.isGroup) return
 

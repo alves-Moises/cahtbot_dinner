@@ -129,6 +129,12 @@ client.on("message", async (msg) => {
 
 })
 
+// ============= DEBUG =========
+client.on("message", async (msg) => {
+    if(msg.isStatus || msg.isGroup) return
+
+    // console.log(users)
+    // if(msg.body.includes("alves")){
 
     // }
 })

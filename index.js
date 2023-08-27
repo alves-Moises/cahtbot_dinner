@@ -83,6 +83,14 @@ client.on("group_leave", async (group_update) => {
         ${chalk.yellow(`${user.pushname}`)}.`
     )
 
+    // chat.sendMessage(
+    //     `Usário removido. ${
+    //         quit.pushname == undefined 
+    //             ? "" 
+    //             : "nome: " + quit.pushname
+    //     }`
+    // )
+
 })
 
 // ============ INTRO ====================

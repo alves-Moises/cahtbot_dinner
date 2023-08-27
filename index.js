@@ -21,7 +21,6 @@ const welcome_msg = () => {
         Me chame de _alves_
         Sou o criador desse chatbot ;)
 
-        ROLETADAS E RUSSAS
         _Em desenvolvimento_
     `
 
